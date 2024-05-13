@@ -1,11 +1,14 @@
 "use client";
 
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-function Login() {
+const LoginPage = () => {
+  const router = useRouter();
+
   const userSchema = yup.object({
     username: yup.string().required("Doldurulması zorunlu alan"),
     password: yup.string().required("Doldurulması zorunlu alan").min(5).max(10),
@@ -23,6 +26,7 @@ function Login() {
   const onSubmit = async (data: UserSchemaType) => {
     if (data !== null) {
       console.log(data);
+      router.push("/Dashboard");
     } else {
       console.log("data yok");
     }
@@ -74,14 +78,14 @@ function Login() {
               )}
             </div>
             <div className="text-right text-gray-400 hover:underline hover:text-black">
-              <a href="#">Forgot your password?</a>
+              <a href="#">Şifremi Unuttum</a>
             </div>
             <div className="px-4 pb-2 pt-4">
               <button
                 className="uppercase block w-full p-4 text-lg rounded-full bg-green-700 hover:bg-green-800  focus:outline-none"
                 type="submit"
               >
-                log in
+                giriş yap
               </button>
             </div>
           </form>
@@ -89,6 +93,6 @@ function Login() {
       </div>
     </div>
   );
-}
+};
 
-export default Login;
+export default LoginPage;
