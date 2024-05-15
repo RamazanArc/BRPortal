@@ -109,7 +109,7 @@ const Sidebar = () => {
                 w-full h-full pl-4
               `}
             >
-              BR Portal
+              E-Ticaret Portal
             </label>
             <button className="p-3 rounded-xl0" onClick={toggleSidebar}>
               <IoIosMenu className="h-6 w-6 rounded-md hover:bg-black hover:text-white" />
