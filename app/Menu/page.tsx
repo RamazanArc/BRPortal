@@ -47,7 +47,7 @@ const Menu = () => {
     <div className="flex">
       <Sidebar />
       <div className="relative overflow-x-auto w-full">
-        <h1 className="font-bold text-xl mt-5 mb-5 ml-5">Menus</h1>
+        <h1 className="font-bold text-xl mt-5 mb-5 ml-5">Menu List</h1>
         <div className="relative">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg
@@ -70,7 +70,7 @@ const Menu = () => {
             type="search"
             id="default-search"
             className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
-            placeholder="Kullanıcı Ara"
+            placeholder="Menü Ara"
             required
             value={searchTerm}
             onChange={handleSearch}
@@ -131,7 +131,10 @@ const Menu = () => {
                 <td className="px-6 py-4">{menu.icon}</td>
                 <td className="px-6 py-4">{menu.menuOrder}</td>
                 <td className="px-6 py-4">
-                  <button className="flex font-medium text-green-600 hover:underline">
+                  <button
+                    onClick={() => router.push("/Menu/AddRole")}
+                    className="flex font-medium text-green-600 hover:underline"
+                  >
                     Add Role
                   </button>
                   <button className="font-medium text-red-600 hover:underline">
