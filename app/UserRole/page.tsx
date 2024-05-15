@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Sidebar from "../Components/Sidebar";
+import { useRouter } from "next/navigation";
 
 const UserRole = () => {
   const [users, setUsers] = useState([
@@ -24,6 +25,7 @@ const UserRole = () => {
     },
   ]);
   const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
 
   // Arama kutusuna yazıldığında çalışacak fonksiyon
   const handleSearch = (event: any) => {
@@ -39,7 +41,9 @@ const UserRole = () => {
     <div className="flex">
       <Sidebar />
       <div className="relative overflow-x-auto w-full">
-        <h1 className="font-bold text-xl mt-5 mb-5 ml-5">BR Portal Users</h1>
+        <h1 className="font-bold text-xl mt-5 mb-5 ml-5">
+          E-Ticaret Portal Users
+        </h1>
         <div className="relative">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg
@@ -69,7 +73,7 @@ const UserRole = () => {
           />
           <button
             type="submit"
-            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
+            className="text-white absolute end-2.5 bottom-2.5 bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
           >
             Search
           </button>
@@ -107,8 +111,11 @@ const UserRole = () => {
                 <td className="px-6 py-4">{user.mail}</td>
                 <td className="px-6 py-4">{user.roleCode}</td>
                 <td className="px-6 py-4">
-                  <button className="font-medium text-blue-600 hover:underline">
-                    Delete User
+                  <button
+                    onClick={() => router.push("/UserRole/UserRoleDetail")}
+                    className="font-medium text-green-600 hover:underline"
+                  >
+                    Detail
                   </button>
                 </td>
               </tr>
