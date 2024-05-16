@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import Cookies from "js-cookie";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -26,11 +27,21 @@ const LoginPage = () => {
   const onSubmit = async (data: UserSchemaType) => {
     if (data !== null) {
       console.log(data);
+
+      // Set cookies for username and password
+      Cookies.set("username", data.username, { expires: 7 }); // Cookie expires in 7 days
+      Cookies.set("password", data.password, { expires: 7 }); // Cookie expires in 7 days
+      const token = "your-obtained-token";
+
+      // Set the token in the cookie
+      Cookies.set("token", token, { expires: 7 }); // Cookie expires in 7 days
+
       router.push("/Dashboard");
     } else {
       console.log("data yok");
     }
   };
+
   return (
     <div className="bg-cover bg-center bg-fixed bg-[url('/assets/br2.jpg')]">
       <div className="h-screen flex justify-center items-center backdrop-blur">
@@ -82,7 +93,7 @@ const LoginPage = () => {
             </div>
             <div className="px-4 pb-2 pt-4">
               <button
-                className="uppercase block w-full p-4 text-lg rounded-full bg-green-700 hover:bg-green-800  focus:outline-none"
+                className="uppercase block w-full p-4 text-lg rounded-full bg-green-700 hover:bg-green-800 focus:outline-none"
                 type="submit"
               >
                 giriş yap
